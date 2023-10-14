@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
 import java.util.*
 import android.widget.DatePicker
+import android.widget.Toast
 
 class RoomInfoActivity : AppCompatActivity() {
     private lateinit var myCalendar: Calendar
@@ -43,20 +44,27 @@ class RoomInfoActivity : AppCompatActivity() {
         btnPreview = findViewById(R.id.btnPreview)
         edNum = findViewById(R.id.edNum)
 
-        roomType = spinerType.selectedItem.toString()
-
-        btnPreview.setOnClickListener({
-            val i = Intent(this@RoomInfoActivity, FinalActivity::class.java)
-            i.putExtra("Name", name)
-            i.putExtra("Address", address)
-            i.putExtra("Phone", phone)
-            i.putExtra("e-mail", email)
-            i.putExtra("RoomType", roomType)
-            i.putExtra("Checkin", edittext.text.toString())
-            i.putExtra("Checkout", edCheckout.text.toString())
-            i.putExtra("numberofperson", edNum.text.toString())
-            startActivity(i)
-        })
+        btnPreview.setOnClickListener {
+            roomType = spinerType.selectedItem.toString()
+            if (checkDate(edittext.text.toString(), edCheckout.text.toString())) {
+                val i = Intent(this@RoomInfoActivity, FinalActivity::class.java)
+                i.putExtra("Name", name)
+                i.putExtra("Address", address)
+                i.putExtra("Phone", phone)
+                i.putExtra("e-mail", email)
+                i.putExtra("RoomType", roomType)
+                i.putExtra("Checkin", edittext.text.toString())
+                i.putExtra("Checkout", edCheckout.text.toString())
+                i.putExtra("numberofperson", edNum.text.toString())
+                startActivity(i)
+            } else {
+                Toast.makeText(
+                    this@RoomInfoActivity,
+                    "Date " + edittext.text.toString() + " < " + edCheckout.text.toString(),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
 
         val date1 = DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int ->
             myCalendar.set(Calendar.YEAR, year)
@@ -65,7 +73,7 @@ class RoomInfoActivity : AppCompatActivity() {
             updateLabel(myCalendar, edittext)
         }
 
-        edittext.setOnClickListener({
+        edittext.setOnClickListener {
             DatePickerDialog(
                 this@RoomInfoActivity,
                 date1,
@@ -73,7 +81,7 @@ class RoomInfoActivity : AppCompatActivity() {
                 myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)
             ).show()
-        })
+        }
 
         val date2 = DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int ->
             myCalendar.set(Calendar.YEAR, year)
@@ -82,7 +90,7 @@ class RoomInfoActivity : AppCompatActivity() {
             updateLabel(myCalendar, edCheckout)
         }
 
-        edCheckout.setOnClickListener({
+        edCheckout.setOnClickListener {
             DatePickerDialog(
                 this@RoomInfoActivity,
                 date2,
@@ -90,12 +98,19 @@ class RoomInfoActivity : AppCompatActivity() {
                 myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)
             ).show()
-        })
+        }
     }
 
     private fun updateLabel(myCalendar: Calendar, editText: EditText) {
         val myFormat = "dd/MM/yy"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         editText.setText(sdf.format(myCalendar.time))
+    }
+
+    private fun checkDate(date1: String, date2: String): Boolean {
+        if(date1 > date2) {
+            return false
+        }
+        return true
     }
 }

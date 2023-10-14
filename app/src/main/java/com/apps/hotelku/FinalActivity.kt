@@ -26,7 +26,7 @@ class FinalActivity : AppCompatActivity() {
         val intent: Intent = intent
         name = intent.getStringExtra("Name").toString()
         address = intent.getStringExtra("Address").toString()
-        phone = intent.getStringExtra("phone").toString()
+        phone = intent.getStringExtra("Phone").toString()
         numberOfRooms = intent.getStringExtra("roomnumber").toString()
         numberOfPerson = intent.getStringExtra("numberofperson").toString()
         txtCheckin = intent.getStringExtra("Checkin").toString()
