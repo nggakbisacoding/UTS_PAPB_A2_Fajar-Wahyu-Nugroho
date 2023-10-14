@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AirBNB Reserved</string>
+    <string name="tile_activity_login">LoginActivity</string>
+    <string name="desc1">King size bed or twin beds Spacious living room Size: from 46 m²</string>
+    <string name="desc2">King size bed Butler service Size: from 100 m²</string>
+    <string-array name="tipe">
+        <item>Regular</item>
+        <item>Extra</item>
+        <item>Double</item>
+        <item>VIP</item>
+        <item>VVIP</item>
+    </string-array>
+</resources>
