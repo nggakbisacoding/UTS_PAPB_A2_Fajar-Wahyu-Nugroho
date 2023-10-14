@@ -22,8 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".PersonnelInfoActivity"
-            android:label="AirBnb" />
+        <activity android:name=".PersonnelInfoActivity" />
         <activity android:name=".RoomInfoActivity" />
         <activity android:name=".FinalActivity" />
         <activity android:name=".DetailActivity"/>
