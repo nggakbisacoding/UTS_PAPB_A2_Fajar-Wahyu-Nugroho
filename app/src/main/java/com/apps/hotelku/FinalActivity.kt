@@ -1,4 +1,4 @@
-package com.airbnb
+package com.apps.hotelku
 
 import android.content.Intent
 import android.net.Uri

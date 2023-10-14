@@ -1,4 +1,4 @@
-package com.airbnb
+package com.apps.hotelku
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
 import java.util.*
 import android.widget.DatePicker
-import androidx.core.view.get
-
 
 class RoomInfoActivity : AppCompatActivity() {
     private lateinit var myCalendar: Calendar

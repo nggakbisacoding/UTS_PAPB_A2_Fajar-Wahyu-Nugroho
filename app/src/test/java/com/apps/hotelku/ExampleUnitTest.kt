@@ -1,4 +1,4 @@
-package com.airbnb
+package com.hotelku
 
 import org.junit.Test
 

@@ -4,8 +4,12 @@ plugins {
 }
 
 android {
-    namespace 'com.airbnb'
+    namespace 'com.apps.hotelku'
     compileSdk 34
+
+    buildFeatures {
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "com.airbnb"
