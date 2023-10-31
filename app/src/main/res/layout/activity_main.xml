@@ -5,10 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DAC4F4">
+        android:background="#DAC4F4"
+        app:layout_constraintBaseline_toTopOf="@id/navbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/navbar">
 
         <TextView
             android:id="@+id/textView"
@@ -34,12 +41,12 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -63,8 +70,8 @@
                         android:id="@+id/btnDetailsSuite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Full details"
-                        android:layout_gravity="center_horizontal" />
+                        android:layout_gravity="center_horizontal"
+                        android:text="Full details" />
 
                     <ImageView
                         android:id="@+id/PenthouseimagemSuite"
@@ -87,13 +94,25 @@
                         android:id="@+id/btnCoverageDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Full details"
-                        android:layout_gravity="center_horizontal"/>
+                        android:layout_gravity="center_horizontal"
+                        android:text="Full details" />
 
                 </LinearLayout>
 
             </ScrollView>
 
         </LinearLayout>
+
     </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

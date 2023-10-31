@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
-import android.view.View
 import com.apps.hotelku.databinding.ActivityDetailBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -22,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
                 val intent = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()
-            }, 3000) // Ini menunda splash screen selama 3 detik (milidetik)
+            }, 3000)
         }
     }
 }
