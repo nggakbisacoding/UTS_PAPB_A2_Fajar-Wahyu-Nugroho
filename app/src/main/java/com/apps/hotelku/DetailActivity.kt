@@ -1,39 +1,35 @@
 package com.apps.hotelku
 
-import android.content.Intent
-import android.os.Bundle
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.bumptech.glide.Glide
+import com.apps.hotelku.databinding.ActivityDetailBinding
 
-class DetailActivity: AppCompatActivity(){
-    private lateinit var rooms: String
-    private lateinit var image: ImageView
-    private lateinit var rname: TextView
-    private lateinit var desc: TextView
-    private lateinit var facility: TextView
+class DetailActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val intent: Intent = intent
-        rooms = intent.getStringExtra("room").toString()
-        rname = findViewById(R.id.roomname)
-        desc = findViewById(R.id.txtSuite)
-        facility = findViewById(R.id.txtfacility)
+        // mengambil data intent
+        val dataIntent = intent
+        val titleData = dataIntent.getStringExtra("DISASTER_NAME")
+        val descData = dataIntent.getStringExtra("DISASTER_TYPE")
+        val imgUrl = dataIntent.getStringExtra("DISASTER_IMAGE")
+        val CountryData = dataIntent.getStringExtra("DISASTER_COUNTRY")
 
-        if(rooms == "46m") {
-            rname.setText("Suite Room")
-            facility.setText("AC, Wifi, Breakfast, GYM")
-        } else {
-            rname.setText("Luxury Room")
-            image = findViewById(R.id.imagemsuite)
-            image.setImageResource(R.drawable.double_bed)
-            desc.setText(R.string.desc2)
-            facility.setText("AC, Wifi, Breakfast, GYM, Spa, Premium Service, Swimming Pool, Bar")
+        with(binding){
+            Glide.with(this@DetailActivity).load(imgUrl).into(imageBahasa)
+            var detaiTitle = "Detail Kucing " + titleData
+            textView.text = detaiTitle
+            var titleShown = "Nama Kucing: " + titleData
+            tvJudul.text = titleShown
+            var descshown = "Deskripsi singkat: " + descData
+            tvDesc.text = descshown
+            var yearshown = "Negara Asal: " + CountryData
+            tvTahun.text = yearshown
         }
     }
 }
